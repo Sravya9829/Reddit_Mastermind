@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-dark-700;
+  }
+  
+  body {
+    @apply bg-dark-950 text-white font-sans;
+    @apply antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 69, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0, 245, 255, 0.03) 0%, transparent 50%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  /* Brutal Button */
+  .btn {
+    @apply relative px-8 py-4 font-bold uppercase tracking-wider;
+    @apply border-4 border-white transition-all duration-200;
+    @apply overflow-hidden;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  .btn::before {
+    content: '';
+    @apply absolute inset-0 bg-neon-orange;
+    @apply -translate-x-full transition-transform duration-300;
+  }
+
+  .btn:hover::before {
+    @apply translate-x-0;
+  }
+
+  .btn span {
+    @apply relative z-10;
+  }
+
+  .btn:hover {
+    @apply text-dark-950 border-neon-orange;
+  }
+
+  .btn-primary {
+    @apply bg-neon-orange text-dark-950 border-neon-orange;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-white border-white;
+  }
+
+  /* Brutal Card */
+  .brutal-card {
+    @apply relative bg-dark-900 border-4 border-dark-700;
+    @apply shadow-[8px_8px_0px_0px_rgba(255,69,0,0.3)];
+    @apply transition-all duration-300;
+  }
+
+  .brutal-card:hover {
+    @apply shadow-[12px_12px_0px_0px_rgba(255,69,0,0.5)];
+    @apply translate-x-[-4px] translate-y-[-4px];
+  }
+
+  /* Upload Zone */
+  .upload-brutal {
+    @apply border-4 border-dashed border-dark-700;
+    @apply bg-dark-900/50 backdrop-blur-sm;
+    @apply transition-all duration-300;
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 69, 0, 0.03) 10px,
+        rgba(255, 69, 0, 0.03) 20px
+      );
+  }
+
+  .upload-brutal:hover {
+    @apply border-neon-orange bg-neon-orange/5;
+  }
+
+  .upload-brutal.active {
+    @apply border-neon-cyan bg-neon-cyan/10;
+    animation: pulse 1s infinite;
+  }
+
+  /* Quality Badge */
+  .quality-badge {
+    @apply inline-flex items-center justify-center;
+    @apply px-4 py-2 font-mono font-bold;
+    @apply border-4 border-current;
+    @apply uppercase tracking-wider;
+    font-size: 0.875rem;
+  }
+
+  .quality-high {
+    @apply text-accent-green border-accent-green;
+    @apply bg-accent-green/10;
+  }
+
+  .quality-medium {
+    @apply text-yellow-400 border-yellow-400;
+    @apply bg-yellow-400/10;
+  }
+
+  .quality-low {
+    @apply text-red-400 border-red-400;
+    @apply bg-red-400/10;
+  }
+
+  /* Progress Bar */
+  .progress-brutal {
+    @apply h-4 bg-dark-800 border-4 border-dark-700;
+    @apply relative overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-neon-orange to-neon-cyan;
+    @apply transition-all duration-500;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Text Styles */
+  .text-gradient {
+    @apply bg-gradient-to-r from-neon-orange via-neon-cyan to-accent-purple;
+    @apply bg-clip-text text-transparent;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+  }
+
+  /* Post Card Brutal */
+  .post-card {
+    @apply brutal-card p-6;
+    @apply hover:border-neon-orange/50;
+  }
+}
+
+@layer utilities {
+  .grain {
+    position: relative;
+  }
+
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF4500;
+  border: 2px solid #0A0A0B;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF5722;
+}
+
+/* Selection */
+::selection {
+  background-color: #FF4500;
+  color: #0A0A0B;
+}
+
+/* Cursor */
+* {
+  cursor: default;
+}
+
+a, button, input, textarea, select {
+  cursor: pointer;
+}
