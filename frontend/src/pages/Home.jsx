@@ -128,7 +128,7 @@ const Home = () => {
               </div>
             </div>
             <a 
-              href="https://github.com/yourusername/reddit-mastermind" 
+              href="https://github.com/Sravya9829/Reddit_Mastermind" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-neon-orange transition-colors"
